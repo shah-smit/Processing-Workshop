@@ -1,7 +1,7 @@
 PImage img1;
 PImage img2;
 void setup() {
-size(480, 120);
+size(480, 480);
 img1 = loadImage("lunar.jpg");
 img2 = loadImage("capsule.jpg");
 }
