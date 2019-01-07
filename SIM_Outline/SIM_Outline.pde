@@ -1,11 +1,18 @@
 int moveX;
+int moveCar1X, moveCar1Y;
+int moveCar2X, moveCar2Y;
+int speedCar1;
+int speedCar2;
 void setup(){
 size(1000,800);
+speedCar1 = (int)random(random(10)) + 5;
+speedCar2 = (int)random(random(10)) + 5;
 }
 
 void draw(){
   //move clounds forward
     moveX++;
+   
   //blue background
   fill(135,206,250);
   noStroke();
@@ -97,7 +104,9 @@ void draw(){
     fill(218,165,32);
     text("SIM University", 455, 255); 
     text("SIM", 480, 405); 
-    
+    moveCar1X = moveCar1X + speedCar1;
+    moveCar2X = moveCar2X + speedCar2;
+    cars();
 }
 
 void clouds() {
@@ -114,6 +123,31 @@ void clouds() {
 }
 
 void cars(){
+  int y = 525;
+pushMatrix();
+rect(moveCar1X+25,y,100,50);
+rect(moveCar1X,y+50,150,50);
+ellipse(moveCar1X+30,y+100,50,50);
+ellipse(moveCar1X+100,y+100,50,50);
+popMatrix();
+if(moveCar1X >= width+150)
+{
+  moveCar1X = 0;
+  speedCar1 = (int)random(random(10)) + 5;
+}
+  
+y = y + 150;
+pushMatrix();
 
+rect(moveCar2X+25,y,100,50);
+rect(moveCar2X,y+50,150,50);
+ellipse(moveCar2X+30,y+100,50,50);
+ellipse(moveCar2X+100,y+100,50,50);
+popMatrix();
+if(moveCar2X >= width+150)
+  {
+    moveCar2X = 0;
+    speedCar2 = (int)random(random(10)) + 5;
+  }
 
 }
